@@ -1,0 +1,115 @@
+@import './base.css';
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 16px 0px;
+}
+
+button {
+  border: none;
+  padding: 8px;
+  height: fit-content;
+  
+  background-color: #010307;
+  color:#fef9dd;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 5px 3px 5px #295378;
+  
+  font-family: 'IM Fell English', serif;
+  font-size: 24px;
+}
+
+button:disabled {
+  background-color: #b7d6d7;
+  color:#d5e8e7;
+}
+
+.gameSpace {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.counterWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+#stats {
+  width: 25% !important;
+}
+
+.singleCounter {
+  background-color: #B1F4FC;
+
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  min-width: fit-content;
+  width: 33%;
+  justify-content: center;
+  padding: 8px;
+}
+
+.miniCounter {
+  background-color: #395461;
+  min-width: fit-content;
+  width: 30%;
+  text-align: center;
+}
+
+.counterLabel, .counterValue {
+  margin: 8px;
+}
+
+.counterValue {
+  color: rgb(199, 199, 197);
+}
+
+
+.eventWrapper {
+  max-height: 314px;
+  overflow-y: auto;
+
+  background-color: #F4D499;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#listOfEvents {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.singleEvent {
+  margin: 8px;
+  padding: 8px;
+  width: fit-content;
+
+  background-color: #fef9dd;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 10px 5px 7px #cba381;
+}
+
+.eventText {
+  padding: 0px 8px;
+  font-style: italic;
+}
+
+.purchaseWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+}
