@@ -31,23 +31,23 @@ export default {
   <div class="achievementWrapper">
     <button class="achievement" :disabled="!showDolphin" @mouseover="$event => dolphinHover = true"
       @mouseleave="$event => dolphinHover = false">
-      <img src="dolphin.PNG" alt="dolphin" class="achievementIcon" v-show="showDolphin" />
+      <img src="/dolphin.png" alt="dolphin" class="achievementIcon" v-show="showDolphin" />
     </button>
     <button class="achievement" :disabled="!showWitch" @mouseover="$event => witchHover = true"
       @mouseleave="$event => witchHover = false">
-      <img src="witch.PNG" alt="witch" class="achievementIcon" v-show="showWitch" />
+      <img src="/witch.png" alt="witch" class="achievementIcon" v-show="showWitch" />
     </button>
     <button class="achievement" :disabled="!showMermaid" @mouseover="$event => mermaidHover = true"
       @mouseleave="$event => mermaidHover = false">
-      <img src="mermaid.PNG" alt="mermaid" class="achievementIcon" v-show="showMermaid" />
+      <img src="/mermaid.png" alt="mermaid" class="achievementIcon" v-show="showMermaid" />
     </button>
     <button class="achievement" :disabled="!showKelpie" @mouseover="$event => kelpieHover = true"
       @mouseleave="$event => kelpieHover = false">
-      <img src="kelpie.PNG" alt="kelpie" class="achievementIcon" v-show="showKelpie" />
+      <img src="/kelpie.png" alt="kelpie" class="achievementIcon" v-show="showKelpie" />
     </button>
     <button class="achievement" :disabled="!showKraken" @mouseover="$event => krakenHover = true"
       @mouseleave="$event => krakenHover = false">
-      <img src="kraken.PNG" alt="kraken" class="achievementIcon" v-show="showKraken" />
+      <img src="/kraken.png" alt="kraken" class="achievementIcon" v-show="showKraken" />
     </button>
   </div>
   <div class="creatureInfo" v-if="hover" :id="infoId">
