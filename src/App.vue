@@ -26,6 +26,7 @@ export default {
           fear: 0,
           manpower: { deckhand: 1, muscle: 0 },
           ships: { dingy: 1, galley: 0, warship: 0 },
+          achieve: { dolphin: 0, witch: 0, mermaid: 0, kelpie: 0, kraken: 0 }
         },
         incRate: {
           gold: (1 / 3),
@@ -33,7 +34,9 @@ export default {
         },
         messageLog: [
           "Congratulations matey you just got your first boat! Time to search for riches."
-        ]
+        ],
+        timeStamp: Date.now(),
+        coolDown: 0
       }));
     }
   }
@@ -49,8 +52,10 @@ export default {
 
   <div class="gameSpace">
     <Counters />
-    <Achievements />
-    <EventLog />
+    <div class="mainPane">
+      <Achievements />
+      <EventLog />
+    </div>
     <Purchase />
   </div>
 </template>

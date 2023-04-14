@@ -14,19 +14,19 @@ button {
   border: none;
   padding: 8px;
   height: fit-content;
-  
+
   background-color: #010307;
-  color:#fef9dd;
+  color: #fef9dd;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   box-shadow: 5px 3px 5px #295378;
-  
+
   font-family: 'IM Fell English', serif;
   font-size: 24px;
 }
 
 button:disabled {
   background-color: #b7d6d7;
-  color:#d5e8e7;
+  color: #d5e8e7;
 }
 
 .gameSpace {
@@ -34,6 +34,12 @@ button:disabled {
 
   display: flex;
   flex-direction: column;
+  gap: 16px;
+}
+
+.mainPane {
+  display: flex;
+  flex-direction: row;
   gap: 16px;
 }
 
@@ -66,7 +72,8 @@ button:disabled {
   text-align: center;
 }
 
-.counterLabel, .counterValue {
+.counterLabel,
+.counterValue {
   margin: 8px;
 }
 
@@ -76,7 +83,8 @@ button:disabled {
 
 
 .eventWrapper {
-  max-height: 314px;
+  height: 314px;
+  width: 100%;
   overflow-y: auto;
 
   background-color: #F4D499;
@@ -112,4 +120,139 @@ button:disabled {
   flex-direction: row;
   gap: 16px;
   flex-wrap: wrap;
+
+  margin-bottom: 8px;
+}
+
+.purchaseInfo {
+  position: fixed;
+  bottom: 125px;
+
+  max-width: 300px;
+
+  background-color: #d5e8e7;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 10px 5px 7px #6d4f6175;
+
+  padding: 0px 8px;
+  padding-left: 16px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.purchaseInfo::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #d5e8e7;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #d5e8e7;
+  border-bottom: 10px solid transparent;
+  left: 20px;
+  bottom: -20px;
+}
+
+#dhInfo {
+  left: 70px;
+}
+
+#mInfo {
+  left: 250px;
+}
+
+#diInfo {
+  left: 430px;
+}
+
+#gInfo {
+  left: 590px;
+}
+
+#wInfo {
+  left: 745px;
+}
+
+#bInfo {
+  left: 900px;
+}
+
+.achievementWrapper {
+  height: 314px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  padding: 0px 8px;
+
+  background-color: #fef9dd;
+}
+
+.achievement {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.achievement:disabled {
+  background-color: transparent;
+}
+
+.achievementIcon {
+  width: 40px;
+}
+
+.creatureInfo {
+  position: fixed;
+  left: 85px;
+
+  background-color: #d5e8e7;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 10px 5px 7px #6d4f6175;
+
+  padding: 0px 8px;
+}
+
+.creatureInfo::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 0px;
+  border-right: 16px solid #d5e8e7;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  left: -12px;
+}
+
+#dolphinInfo::before{top: 35px;}
+#witchInfo::before{top: 55px;}
+#mermaidInfo::before{top: 75px;}
+#kelpieInfo::before{top: 95px;}
+#krakenInfo::before{top: 115px;}
+
+#dolphinInfo {
+  top: 143px;
+}
+
+#witchInfo {
+  top: 181px;
+}
+
+#mermaidInfo {
+  top: 219px;
+}
+
+#kelpieInfo {
+  top: 257px;
+}
+
+#krakenInfo {
+  top: 295px;
 }

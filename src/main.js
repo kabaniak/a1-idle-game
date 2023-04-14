@@ -56,8 +56,8 @@ const descriptions = [
 const creatures = [
     {name: "mermaid", success: 0.6, shipLoss: 0, crewLoss: 0.2, fearGain: 10, goldGain: 6},
     {name: "kraken", success: 0.25, shipLoss: 0.5, crewLoss: 0.5, fearGain: 50, goldGain: 3},
-    {name: "witch", success: 0.8, shipLoss: 0.2, crewLoss: 0.2, fearGain: 5, goldGain: 6},
-    {name: "kelpie", success: 0.35, shipLoss: 0.2, crewLoss: 0.4, fearGain: 20, goldGain: 3},
+    {name: "witch", success: 0.8, shipLoss: 0.2, crewLoss: 0.2, fearGain: 4, goldGain: 6},
+    {name: "kelpie", success: 0.4, shipLoss: 0.2, crewLoss: 0.4, fearGain: 20, goldGain: 3},
     {name: "dolphin", success: 0.6, shipLoss: 0, crewLoss: 0.05, fearGain: -10, goldGain: 5}
 ]
 
@@ -75,7 +75,7 @@ const failNote = [
     "It found you objectively ugly.",
     "You weep with shame.",
     "Who will let you rob them now?",
-    "Your crew all laughs and you finally realize you forgot to wear pants the whole time.",
+    "Your crew all laughs and you realize you're not wearing pants.",
     "Your lost ships sink to the deep.",
     "The creature laughs maniacally as it leaves you behind.",
     "On the bright side now you get a hook hand.",
@@ -91,6 +91,7 @@ const store = createStore({
                 fear: 0,
                 manpower: { deckhand: 1, muscle: 0 },
                 ships: { dingy: 1, galley: 0, warship: 0 },
+                achieve: {dolphin: 0, witch: 0, mermaid: 0, kelpie: 0, kraken: 0}
             },
             incRate: {
                 gold: 0.2,
@@ -99,6 +100,7 @@ const store = createStore({
             messageLog: [
                 "Congratulations matey you just got your first boat! Time to search for riches."
             ],
+            timeStamp: Date.now(),
             coolDown: 0
         }
     },
@@ -107,13 +109,20 @@ const store = createStore({
     actions: {
         updateIfStorage({ commit }, storeVal) {
             this.replaceState(JSON.parse(storeVal))
+            // update values based on elapsed time
+            let secondsPassed = (Date.now() - this.state.timeStamp) / 1000;
+            
+            this.state.counterValues.gold += (this.state.incRate.gold * secondsPassed);
+            this.state.counterValues.fear += (this.state.incRate.fear * secondsPassed);
+            this.state.coolDown += secondsPassed;
         },
         incrementAsync() {
             setTimeout(() => {
                 // update values based on inc rates
                 this.state.counterValues.gold += this.state.incRate.gold;
                 this.state.counterValues.fear += this.state.incRate.fear;
-                this.state.coolDown += 1
+                this.state.coolDown += 1;
+                this.state.timeStamp = Date.now();
                 localStorage.setItem("pirateStates", JSON.stringify(this.state))
                 this.dispatch("incrementAsync")
             }, 1000)
@@ -136,7 +145,7 @@ const store = createStore({
             this.state.messageLog.unshift("Welcome aboard your newest " + crewType + " - " + name + " who once " + feat);
         },
         buyShip({ commit }, shipType) {
-            if(shipType == "dingy"){
+            if(shipType == "dingey"){
                 this.state.counterValues.ships.dingy++;
                 this.state.counterValues.gold -= 50;
             }
@@ -162,10 +171,13 @@ const store = createStore({
             let creat = creatures[Math.floor(Math.random() * creatures.length)]
             let note = ""
 
+            this.state.counterValues.fear -= 25000;
+
             // successful befriending
             if( Math.random() < creat.success){
                 this.state.incRate.fear += creat.fearGain;
                 this.state.incRate.gold += creat.goldGain;
+                this.state.counterValues.achieve[creat.name] += 1
 
                 note = succNote[Math.floor(Math.random() * succNote.length)]
 
@@ -195,4 +207,4 @@ const store = createStore({
 })
 
 // create stuff
-createApp(App).use(store).mount('#app')
+const app = createApp(App).use(store).mount('#app')
